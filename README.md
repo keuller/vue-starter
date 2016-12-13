@@ -4,7 +4,7 @@
 
 ## Usage
 
-Please make sure you have vue-cli installed in your machine.
+Please make sure you have vue-cli installed.
 
 ```bash
 $ vue init keuller/vue-starter [project-name]
