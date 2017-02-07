@@ -93,13 +93,13 @@ if (process.env.NODE_ENV === 'production') {
       comments: false,
       sourceMap: false,
       compress: {
-        conitionals: true,
+        conditionals: true,
         warnings: false,
         dead_code: true,
         unused: true,
         evaluate: true,
         if_return: true,
-        join_vers: true
+        join_vars: true
       }
     }),
     new webpack.LoaderOptionsPlugin({
