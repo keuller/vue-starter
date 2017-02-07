@@ -72,6 +72,7 @@ module.exports = {
   },
 
   plugins: [
+    new webpack.NoemitOnErrorsPlugin(),
     new ExtractTextPlugin("css/app.css"),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
@@ -92,7 +93,13 @@ if (process.env.NODE_ENV === 'production') {
       comments: false,
       sourceMap: false,
       compress: {
-        warnings: false
+        conitionals: true,
+        warnings: false,
+        dead_code: true,
+        unused: true,
+        evaluate: true,
+        if_return: true,
+        join_vers: true
       }
     }),
     new webpack.LoaderOptionsPlugin({
