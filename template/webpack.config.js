@@ -72,7 +72,7 @@ module.exports = {
   },
 
   plugins: [
-    new webpack.NoemitOnErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new ExtractTextPlugin("css/app.css"),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
