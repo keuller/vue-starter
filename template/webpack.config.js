@@ -7,6 +7,8 @@ var cssLoader = ExtractTextPlugin.extract({
     fallbackLoader: 'vue-style-loader'
 })
 
+process.traceDeprecation = true
+
 module.exports = {
   entry: {
     bundle: './src/index.js',
@@ -29,26 +31,17 @@ module.exports = {
             css: cssLoader
           }
         }
-      },
-      {
+      }, {
         test: /\.css$/,
         loader: cssLoader
-      },
-      {
+      }, {
         test: /\.less$/,
         loader: cssLoader
-      },
-      {
+      }, {
         test: /\.js$/,
         loader: 'babel-loader',
-        exclude: /node_modules/,
-        options: {
-          presets: [
-            ["es2015", { "modules": false }]
-          ]
-        }
-      },
-      {
+        exclude: /node_modules/
+      }, {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {

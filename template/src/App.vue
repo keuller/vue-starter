@@ -1,13 +1,13 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
+    <h1></h1>
     <h2>
         <router-link to="/essential">Essential Links</router-link>
         &nbsp;|&nbsp;
         <router-link to="/ecosystem">Ecosystem</router-link>
     </h2>
-    <router-view></router>
+    <router-view></router-view>
   </div>
 </template>
 
