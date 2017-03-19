@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <h1></h1>
+    <h1>{{msg}}</h1>
     <h2>
         <router-link to="/essential">Essential Links</router-link>
         &nbsp;|&nbsp;
@@ -34,21 +34,11 @@
 
 .router-link-active { color: #2c3e50; }
 
-h1, h2 {
-  font-weight: normal;
-}
+h1, h2 { font-weight: normal; }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
+ul { list-style-type: none; padding: 0; }
 
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
+li { display: inline-block; margin: 0 10px; }
 
-a {
-  color: #42b983;
-}
+a { color: #42b983; }
 </style>
