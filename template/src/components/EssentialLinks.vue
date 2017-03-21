@@ -1,6 +1,6 @@
 <template>
     <ul>
-        <li v-for="link in links"> <a :href="link.uri" target="_blank">{{link.label}}</a> </li>
+        <li v-for="link in links"> <a :href="link.uri" target="_blank">\{{link.label}}</a> </li>
     </ul>
 </template>
 
