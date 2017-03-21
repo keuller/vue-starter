@@ -1,14 +1,22 @@
 <template>
     <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://gitter.im/vuejs/vue" target="_blank">Gitter Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
+        <li v-for="link in links"><a :href="link.uri" target="_blank">{{link.label}}</a></li>
     </ul>
 </template>
 
 <script>
-    export default {
-        name: 'essential-links'
+    import { connect } from 'vuelm'
+    import essentialStore from 'store/essential'
+    
+    const EssentialLinks = {
+        name: 'essential-links',
+
+        data() {
+            return {
+                links: []
+            }
+        }
     }
+
+    export default connect(EssentialLinks, { essentialStore })
 </script>

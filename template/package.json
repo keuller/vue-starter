@@ -1,7 +1,7 @@
 {
-  "name": "vue-starter",
-  "description": "Simple Vue Starter Project",
-  "version": "1.1.0",
+  "name": "sample",
+  "description": "Simple Vue Project",
+  "version": "1.0.0",
   "author": "Keuller Magalhaes <keuller.magalhaes@gmail.com>",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --inline --hot",
@@ -24,7 +24,7 @@
   "dependencies": {
     "vue": "^2.2.4",
     "vue-router": "^2.3.0",
-    "vuelm": "0.5.0"
+    "vuelm": "^0.6.0"
   },
   "devDependencies": {
     "babel-core": "^6.24.0",
@@ -37,8 +37,8 @@
     "css-loader": "^0.27.3",
     "extract-text-webpack-plugin": "2.1.0",
     "file-loader": "^0.10.1",
-    "less": "^3.0.0",
-    "less-loader": "^2.2.3",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.1",
     "vue-loader": "^11.1.4",
     "vue-template-compiler": "^2.2.4",
     "webpack": "^2.2.1",
