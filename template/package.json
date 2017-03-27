@@ -22,7 +22,7 @@
     ]
   },
   "dependencies": {
-    "vue": "^2.2.4",
+    "vue": "^2.2.6",
     "vue-router": "^2.3.0",
     "vuelm": "^0.6.0"
   },
@@ -38,10 +38,10 @@
     "extract-text-webpack-plugin": "2.1.0",
     "file-loader": "^0.10.1",
     "less": "^2.7.2",
-    "less-loader": "^4.0.1",
-    "vue-loader": "^11.1.4",
-    "vue-template-compiler": "^2.2.4",
-    "webpack": "^2.2.1",
+    "less-loader": "^4.0.2",
+    "vue-loader": "^11.3.3",
+    "vue-template-compiler": "^2.2.6",
+    "webpack": "^2.3.2",
     "webpack-dev-server": "2.4.2"
   }
 }
