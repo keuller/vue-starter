@@ -1,22 +1,15 @@
-var path = require('path')
+let path = require('path')
   , webpack = require('webpack')
-  , ExtractTextPlugin = require("extract-text-webpack-plugin")
-
-var cssLoader = ExtractTextPlugin.extract({
-    loader: 'css-loader!less-loader',
-    fallbackLoader: 'vue-style-loader'
-})
-
-process.traceDeprecation = true
+  , CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
   entry: {
     bundle: './src/index.js',
     vendor: ['vue', 'vue-router', 'vuelm']
   },
-
+  
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: path.join(__dirname, 'dist'),
     publicPath: '/dist/',
     filename: '[name].js'
   },
@@ -28,20 +21,17 @@ module.exports = {
         loader: 'vue-loader',
         options: {
           loaders: {
-            css: cssLoader
+            'scss': 'vue-style-loader!css-loader!sass-loader',
+            'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
           }
         }
-      }, {
-        test: /\.css$/,
-        loader: cssLoader
-      }, {
-        test: /\.less$/,
-        loader: cssLoader
-      }, {
+      },
+      {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/
-      }, {
+      },
+      {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
@@ -55,18 +45,24 @@ module.exports = {
     modules: ['src', 'node_modules'],
     extensions: ['.js', '.vue'],
     alias: {
-      'vue$': 'vue/dist/vue'
+      'vue$': 'vue/dist/vue.esm.js'
     }
   },
-
+  
   devServer: {
     historyApiFallback: true,
     noInfo: true
   },
+  
+  performance: {
+    hints: false
+  },
+  
+  devtool: '#eval-source-map',
 
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),
-    new ExtractTextPlugin("css/app.css"),
+    new CleanWebpackPlugin(['dist']),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       warnings: false
@@ -74,8 +70,8 @@ module.exports = {
   ]
 }
 
-
 if (process.env.NODE_ENV === 'production') {
+  module.exports.devtool = '#source-map'
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
       'process.env': {
@@ -84,15 +80,9 @@ if (process.env.NODE_ENV === 'production') {
     }),
     new webpack.optimize.UglifyJsPlugin({
       comments: false,
-      sourceMap: false,
+      sourceMap: true,
       compress: {
-        conditionals: true,
-        warnings: false,
-        dead_code: true,
-        unused: true,
-        evaluate: true,
-        if_return: true,
-        join_vars: true
+        warnings: false
       }
     }),
     new webpack.LoaderOptionsPlugin({
