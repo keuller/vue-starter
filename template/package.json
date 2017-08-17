@@ -1,8 +1,8 @@
 {
-  "name": "{{name}}",
-  "description": "{{ description }}",
+  "name": "babyname",
+  "description": "Baby name demo",
   "version": "1.0.0",
-  "author": "{{ author }}",
+  "author": "kmagalhaes <kmagalhaes@uolinc.com>",
   "license": "MIT",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --hot",
@@ -21,6 +21,7 @@
     "clean-webpack-plugin": "^0.1.16",
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.4",
+    "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "node-sass": "^4.5.0",
     "sass-loader": "^6.0.6",
@@ -32,7 +33,12 @@
   "babel": {
     "presets": [
       "stage-2",
-      ["env", { "modules": false }]
+      [
+        "env",
+        {
+          "modules": false
+        }
+      ]
     ]
   },
   "engines": {

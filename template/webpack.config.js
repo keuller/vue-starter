@@ -1,6 +1,9 @@
 let path = require('path')
   , webpack = require('webpack')
   , CleanWebpackPlugin = require('clean-webpack-plugin')
+  , ExtractTextPlugin = require('extract-text-webpack-plugin')
+
+let extractCSS = new ExtractTextPlugin("css/app.css")
 
 module.exports = {
   entry: {
@@ -22,16 +25,21 @@ module.exports = {
         options: {
           loaders: {
             'scss': 'vue-style-loader!css-loader!sass-loader',
-            'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
+            'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
+            'css': extractCSS.extract({
+              use: 'css-loader',
+              fallback: 'vue-style-loader'
+            })
           }
         }
-      },
-      {
+      }, {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/
-      },
-      {
+      }, {
+        test: /\.css$/,
+        use: extractCSS.extract([ 'css-loader' ])
+      },{
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
@@ -51,6 +59,7 @@ module.exports = {
   
   devServer: {
     historyApiFallback: true,
+    port: 5000,
     noInfo: true
   },
   
@@ -63,6 +72,7 @@ module.exports = {
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),
     new CleanWebpackPlugin(['dist']),
+    extractCSS,
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       warnings: false
