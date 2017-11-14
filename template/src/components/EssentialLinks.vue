@@ -1,6 +1,8 @@
 <template>
     <ul>
-        <li v-for="link in links"> <a :href="link.uri" target="_blank">\{{link.label}}</a> </li>
+        <li v-for="(link, idx) in links"> 
+            <a :href="link.uri" v-bind:key="idx" target="_blank">{{link.label}}</a> 
+        </li>
     </ul>
 </template>
 
